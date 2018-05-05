@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.DialogPane?>
+
+<DialogPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+	<content>
+		<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+			<children>
+				<VBox alignment="CENTER" layoutX="14.0" layoutY="14.0">
+					<children>
+						<HBox>
+							<children>
+								<Label text="Bitte Kennwort eingeben.">
+									<HBox.margin>
+										<Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+									</HBox.margin>
+								</Label>
+							</children>
+						</HBox>
+						<PasswordField fx:id="pfPassword" />
+					</children>
+				</VBox>
+			</children>
+			<padding>
+				<Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+			</padding>
+</Pane>
+	</content>
+</DialogPane>

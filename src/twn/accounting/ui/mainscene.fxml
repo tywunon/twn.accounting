@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="twn.accounting.ui.MainScene">
+	<center>
+		<TabPane prefHeight="200.0" prefWidth="200.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+			<tabs>
+				<Tab fx:id="tabTransactions" closable="false" text="Buchungen">
+					<content>
+						<BorderPane>
+							<center>
+								<TableView fx:id="tvTransactions" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+									<columns>
+										<TableColumn maxWidth="175.0" minWidth="175.0" prefWidth="175.0" resizable="false" text="Buchungsdatum">
+											<cellValueFactory>
+												<PropertyValueFactory property="transactionDate" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn maxWidth="175.0" minWidth="175.0" prefWidth="175.0" text="Belegdatum">
+											<cellValueFactory>
+												<PropertyValueFactory property="receiptDate" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Kunde">
+											<cellValueFactory>
+												<PropertyValueFactory property="customer" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Konto">
+											<cellValueFactory>
+												<PropertyValueFactory property="fromAccount" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Gegenkonto">
+											<cellValueFactory>
+												<PropertyValueFactory property="toAccount" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Betrag">
+											<cellValueFactory>
+												<PropertyValueFactory property="amount" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn minWidth="0.0" prefWidth="150.0" text="Text">
+											<cellValueFactory>
+												<PropertyValueFactory property="text" />
+											</cellValueFactory>
+										</TableColumn>
+									</columns>
+								</TableView>
+							</center>
+							<top>
+								<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+									<items>
+										<Button fx:id="btnNewTransaction" mnemonicParsing="false" onAction="#handleNewTransaction" text="Buchen" />
+										<Button fx:id="btnEditTransaction" mnemonicParsing="false" onAction="#handleEditTransaction" text="Bearbeiten" />
+										<Button fx:id="btnDeleteTransaction" mnemonicParsing="false" onAction="#handleDeleteTransaction" text="Löschen" />
+									</items>
+								</ToolBar>
+							</top>
+						</BorderPane>
+					</content>
+				</Tab>
+				<Tab fx:id="tabAccounts" text="Konten (SKR49)">
+					<content>
+						<BorderPane>
+							<center>
+								<TableView fx:id="tvAccounts" prefHeight="200.0" prefWidth="200.0">
+									<columns>
+										<TableColumn prefWidth="141.0" text="Kontonummer">
+											<cellValueFactory>
+												<PropertyValueFactory property="accountNo" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="131.0" text="Bezeichnung">
+											<cellValueFactory>
+												<PropertyValueFactory property="description" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn text="Ertrag">
+											<cellValueFactory>
+												<PropertyValueFactory property="earnings" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="113.0" text="Aufwand">
+											<cellValueFactory>
+												<PropertyValueFactory property="expenditure" />
+											</cellValueFactory>
+										</TableColumn>
+									</columns>
+								</TableView>
+							</center>
+							<top>
+								<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+									<items>
+										<Button fx:id="btnNewAccount" mnemonicParsing="false" onAction="#handleNewAccount" text="Hinzufügen" />
+										<Button fx:id="btnEditAccount" mnemonicParsing="false" onAction="#handleEditAccount" text="Bearbeiten" />
+										<Button fx:id="btnDeleteAccount" mnemonicParsing="false" onAction="#handleDeleteAccount" text="Löschen" />
+										<Button fx:id="btnRestoreAccountPlan" mnemonicParsing="false" onAction="#handleRestoreAccountPlan" text="Wiederherstellen" />
+									</items>
+								</ToolBar>
+							</top>
+						</BorderPane>
+					</content>
+				</Tab>
+				<Tab fx:id="tabCustomer" text="Kunden">
+					<content>
+						<BorderPane prefHeight="200.0" prefWidth="200.0">
+							<center>
+								<TableView fx:id="tvCustomers" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+									<columns>
+										<TableColumn prefWidth="75.0" text="KdNr.">
+											<cellValueFactory>
+												<PropertyValueFactory property="customerNo" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Name">
+											<cellValueFactory>
+												<PropertyValueFactory property="name" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Straße">
+											<cellValueFactory>
+												<PropertyValueFactory property="street" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="PLZ">
+											<cellValueFactory>
+												<PropertyValueFactory property="postalCode" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Ort">
+											<cellValueFactory>
+												<PropertyValueFactory property="city" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Land">
+											<cellValueFactory>
+												<PropertyValueFactory property="country" />
+											</cellValueFactory>
+										</TableColumn>
+									</columns>
+								</TableView>
+							</center>
+							<top>
+								<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+									<items>
+										<Button fx:id="btnNewCustomer" mnemonicParsing="false" onAction="#handleNewCustomer" text="Hinzufügen" />
+										<Button fx:id="btnEditCustomer" mnemonicParsing="false" onAction="#handleEditCustomer" text="Bearbeiten" />
+										<Button fx:id="btnDeleteCustomer" mnemonicParsing="false" onAction="#handleDeleteCustomer" text="Löschen" />
+									</items>
+								</ToolBar>
+							</top>
+						</BorderPane>
+					</content>
+				</Tab>
+				<Tab fx:id="tabProvider" text="Dienstleister">
+					<content>
+						<BorderPane prefHeight="200.0" prefWidth="200.0">
+							<center>
+								<TableView fx:id="tvProvider" prefHeight="618.0" prefWidth="529.0" BorderPane.alignment="CENTER">
+									<columns>
+										<TableColumn prefWidth="75.0" text="IdNo">
+											<cellValueFactory>
+												<PropertyValueFactory property="providerNo" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Name">
+											<cellValueFactory>
+												<PropertyValueFactory property="name" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Straße">
+											<cellValueFactory>
+												<PropertyValueFactory property="street" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="PLZ">
+											<cellValueFactory>
+												<PropertyValueFactory property="postalCode" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Ort">
+											<cellValueFactory>
+												<PropertyValueFactory property="city" />
+											</cellValueFactory>
+										</TableColumn>
+										<TableColumn prefWidth="75.0" text="Land">
+											<cellValueFactory>
+												<PropertyValueFactory property="country" />
+											</cellValueFactory>
+										</TableColumn>
+									</columns>
+								</TableView>
+							</center>
+							<top>
+								<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+									<items>
+										<Button fx:id="btnNewProvider" mnemonicParsing="false" onAction="#handleNewProvider" text="Hinzufügen" />
+										<Button fx:id="btnEditProvider" mnemonicParsing="false" onAction="#handleEditProvider" text="Bearbeiten" />
+										<Button fx:id="btnDeleteProvider" mnemonicParsing="false" onAction="#handleDeleteProvider" text="Löschen" />
+									</items>
+								</ToolBar>
+							</top>
+						</BorderPane>
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</center>
+	<top>
+		<MenuBar BorderPane.alignment="CENTER">
+			<menus>
+				<Menu mnemonicParsing="false" text="Datei">
+					<items>
+						<MenuItem fx:id="miOpen" mnemonicParsing="false" onAction="#handleFileOpen" text="Öffnen">
+							<accelerator>
+								<KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+							</accelerator>
+						</MenuItem>
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem fx:id="miSave" mnemonicParsing="false" onAction="#handleFileSave" text="Speichern">
+							<accelerator>
+								<KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+							</accelerator>
+						</MenuItem>
+						<MenuItem fx:id="miSaveAs" mnemonicParsing="false" onAction="#handleFileSaveAs" text="Speichern unter">
+							<accelerator>
+								<KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+							</accelerator>
+						</MenuItem>
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem fx:id="miClose" mnemonicParsing="false" onAction="#handleFileClose" text="Schließen">
+							<accelerator>
+								<KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+							</accelerator>
+						</MenuItem>
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+	</top>
+</BorderPane>
